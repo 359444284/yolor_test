@@ -77,37 +77,37 @@ yolo_labels_dir = os.path.join(work_sapce_dir, "YOLOLabels/")
 if not os.path.isdir(yolo_labels_dir):
         os.mkdir(yolo_labels_dir)
 clear_hidden_files(yolo_labels_dir)
-yolov5_images_dir = os.path.join(data_base_dir, "images/")
-if not os.path.isdir(yolov5_images_dir):
-        os.mkdir(yolov5_images_dir)
-clear_hidden_files(yolov5_images_dir)
-yolov5_labels_dir = os.path.join(data_base_dir, "labels/")
-if not os.path.isdir(yolov5_labels_dir):
-        os.mkdir(yolov5_labels_dir)
-clear_hidden_files(yolov5_labels_dir)
-yolov5_images_train_dir = os.path.join(yolov5_images_dir, "train/")
-if not os.path.isdir(yolov5_images_train_dir):
-        os.mkdir(yolov5_images_train_dir)
-clear_hidden_files(yolov5_images_train_dir)
-yolov5_images_test_dir = os.path.join(yolov5_images_dir, "val/")
-if not os.path.isdir(yolov5_images_test_dir):
-        os.mkdir(yolov5_images_test_dir)
-clear_hidden_files(yolov5_images_test_dir)
-yolov5_labels_train_dir = os.path.join(yolov5_labels_dir, "train/")
-if not os.path.isdir(yolov5_labels_train_dir):
-        os.mkdir(yolov5_labels_train_dir)
-clear_hidden_files(yolov5_labels_train_dir)
-yolov5_labels_test_dir = os.path.join(yolov5_labels_dir, "val/")
-if not os.path.isdir(yolov5_labels_test_dir):
-        os.mkdir(yolov5_labels_test_dir)
-clear_hidden_files(yolov5_labels_test_dir)
+yolov4_images_dir = os.path.join(data_base_dir, "images/")
+if not os.path.isdir(yolov4_images_dir):
+        os.mkdir(yolov4_images_dir)
+clear_hidden_files(yolov4_images_dir)
+yolov4_labels_dir = os.path.join(data_base_dir, "labels/")
+if not os.path.isdir(yolov4_labels_dir):
+        os.mkdir(yolov4_labels_dir)
+clear_hidden_files(yolov4_labels_dir)
+yolov4_images_train_dir = os.path.join(yolov4_images_dir, "train/")
+if not os.path.isdir(yolov4_images_train_dir):
+        os.mkdir(yolov4_images_train_dir)
+clear_hidden_files(yolov4_images_train_dir)
+yolov4_images_test_dir = os.path.join(yolov4_images_dir, "val/")
+if not os.path.isdir(yolov4_images_test_dir):
+        os.mkdir(yolov4_images_test_dir)
+clear_hidden_files(yolov4_images_test_dir)
+yolov4_labels_train_dir = os.path.join(yolov4_labels_dir, "train/")
+if not os.path.isdir(yolov4_labels_train_dir):
+        os.mkdir(yolov4_labels_train_dir)
+clear_hidden_files(yolov4_labels_train_dir)
+yolov4_labels_test_dir = os.path.join(yolov4_labels_dir, "val/")
+if not os.path.isdir(yolov4_labels_test_dir):
+        os.mkdir(yolov4_labels_test_dir)
+clear_hidden_files(yolov4_labels_test_dir)
  
-train_file = open(os.path.join(wd, "yolov5_train.txt"), 'w')
-test_file = open(os.path.join(wd, "yolov5_val.txt"), 'w')
+train_file = open(os.path.join(wd, "yolov4_train.txt"), 'w')
+test_file = open(os.path.join(wd, "yolov4_val.txt"), 'w')
 train_file.close()
 test_file.close()
-train_file = open(os.path.join(wd, "yolov5_train.txt"), 'a')
-test_file = open(os.path.join(wd, "yolov5_val.txt"), 'a')
+train_file = open(os.path.join(wd, "yolov4_train.txt"), 'a')
+test_file = open(os.path.join(wd, "yolov4_val.txt"), 'a')
 list_imgs = os.listdir(image_dir) # list image files
 prob = random.randint(1, 100)
 print("Probability: %d" % prob)
@@ -128,13 +128,13 @@ for i in range(0,len(list_imgs)):
         if os.path.exists(annotation_path):
             train_file.write(image_path + '\n')
             convert_annotation(nameWithoutExtention) # convert label
-            copyfile(image_path, yolov5_images_train_dir + voc_path)
-            copyfile(label_path, yolov5_labels_train_dir + label_name)
+            copyfile(image_path, yolov4_images_train_dir + voc_path)
+            copyfile(label_path, yolov4_labels_train_dir + label_name)
     else: # test dataset
         if os.path.exists(annotation_path):
             test_file.write(image_path + '\n')
             convert_annotation(nameWithoutExtention) # convert label
-            copyfile(image_path, yolov5_images_test_dir + voc_path)
-            copyfile(label_path, yolov5_labels_test_dir + label_name)
+            copyfile(image_path, yolov4_images_test_dir + voc_path)
+            copyfile(label_path, yolov4_labels_test_dir + label_name)
 train_file.close()
 test_file.close()
